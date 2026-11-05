@@ -1,6 +1,6 @@
 // Fortuna service worker: makes the app work offline.
 // Bump the version number below whenever you change any file, so phones pick up the update.
-const V = "fortuna-v1";
+const V = "fortuna-v2";
 const FILES = ["./", "index.html", "manifest.webmanifest", "icons/icon-192.png", "icons/icon-512.png", "icons/icon-maskable-512.png", "icons/apple-touch-icon.png"];
 self.addEventListener("install", e => {
   e.waitUntil(caches.open(V).then(c => c.addAll(FILES)).then(() => self.skipWaiting()));
