@@ -4,7 +4,13 @@
 <title>Fortuna · Lucky Number Studio</title>
 <meta name="description" content="Fortuna: lucky numbers from numerology, real lottery history and smart patterns. One file, works offline, no sign-up.">
 <meta name="theme-color" content="#0b0a1a">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E🍀%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/png" href="icons/icon-192.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Fortuna">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <style>
 :root{--bg:#0b0a1a;--card:#17142e;--ink:#f3efff;--mute:#a49fc7;--gold:#ffd166;--vio:#8b5cf6;--line:#2c2850;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media(prefers-color-scheme:light){:root{--bg:#f6f3ff;--card:#fff;--ink:#1e1840;--mute:#6a6490;--gold:#b7791f;--vio:#6d3df0;--line:#e0d9fa}}
@@ -170,6 +176,7 @@ details.card>summary::after{content:"＋";float:right;color:var(--mute)}details.
 </section>
 
 <p class="note">Each number appears once per round. When a range runs out, a fresh round starts automatically (locked numbers excepted). Numerology is for inspiration and fun. It can’t predict outcomes, so pair your lucky numbers with action.</p>
+<div style="text-align:center;margin-top:14px"><button class="ghost" id="inst" hidden>📲 Install app on this device</button><p class="p" id="ios" hidden>To install on iPhone: tap the Share button, then “Add to Home Screen”.</p></div>
 </main>
 <script>
 const $=id=>document.getElementById(id),Q=s=>[...document.querySelectorAll(s)];
@@ -315,6 +322,11 @@ while(out.length<c){let best="",bs=-1;for(let i=0;i<30;i++){const n=Math.floor(M
 used4=used4.concat(out);S("destiny-used4",used4);
 $("o4").innerHTML=out.map(t=>{const k=rt(ds(+t)),m=M[k]||["The Void","Pure potential before anything begins."];return'<div class="item"><div class="ball t pill">'+t+'</div><div><span class="tag">Vibration '+k+'</span><b>'+m[0]+'</b></div></div>'}).join("");
 last4=out;$("c4").hidden=false;if($("snd").checked){out.forEach((n,i)=>chime(440+i*90,i*.3));conf()}};
+let dp=null;addEventListener("beforeinstallprompt",e=>{e.preventDefault();dp=e;$("inst").hidden=false});
+$("inst").onclick=()=>{if(dp){dp.prompt();dp.userChoice.finally(()=>{dp=null;$("inst").hidden=true})}};
+addEventListener("appinstalled",()=>$("inst").hidden=true);
+if(/iphone|ipad|ipod/i.test(navigator.userAgent)&&!navigator.standalone&&!matchMedia("(display-mode: standalone)").matches)$("ios").hidden=false;
+if("serviceWorker" in navigator&&location.protocol.indexOf("http")===0)navigator.serviceWorker.register("sw.js").catch(()=>{});
 function tab(t){Q(".tab").forEach(x=>x.classList.toggle("on",x.dataset.t===t));Q("section[data-tab]").forEach(x=>x.hidden=x.dataset.tab!==t);scrollTo(0,0)}
 Q(".tab").forEach(b=>b.onclick=()=>tab(b.dataset.t));
 $("dob").onchange=$("name").onchange=daily;

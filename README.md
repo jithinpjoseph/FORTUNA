@@ -13,7 +13,11 @@ Lucky numbers from numerology and real lottery history. Open `index.html` in any
 7. Tap **⭐ Apply best-value pattern** to switch on the smart options in one tap.
 8. After a draw, open **✅ Check**, enter the winning numbers and tap **Check my sets & save draw** to see how many numbers matched.
 9. Open **📊 Patterns** to see the lottery data behind the numbers. Tap a card title to open it. Tap a TOTO pair or triplet to lock it into your next draw.
-10. When every number in a range has been used, Fortuna starts a fresh round automatically.
+10. **Install it on your phone** (needs the https link from GitHub Pages, not the file opened from your phone's storage):
+    - **Android (Chrome):** tap **📲 Install app on this device** at the bottom of the app, or open the ⋮ menu and choose **Install app**.
+    - **iPhone (Safari):** tap the **Share** button, then **Add to Home Screen**.
+    - After the first visit it opens full screen from your home screen and works offline.
+11. When every number in a range has been used, Fortuna starts a fresh round automatically.
 
 ## ⚠️ Warnings
 
@@ -24,4 +28,5 @@ Lucky numbers from numerology and real lottery history. Open `index.html` in any
 - **Numerology is for fun.** The meanings are entertainment, not advice.
 - **Not affiliated.** Fortuna is not connected to any lottery operator and does not sell or buy tickets.
 - **Play responsibly.** Only spend what you can afford to lose, and only if you are of legal age where you live. If gambling stops being fun, contact a local support service.
-- **Your data stays in your browser.** Clearing browser data erases your history and saved draws. Use **Export** on the Check tab to back them up.
+- **Updating the installed app.** If you change any file, raise the version number in `sw.js` (`fortuna-v1` to `fortuna-v2`) so phones pick up the update.
+- **Your data stays in your browser.** Clearing browser data or uninstalling the app erases your history and saved draws. Use **Export** on the Check tab to back them up.
